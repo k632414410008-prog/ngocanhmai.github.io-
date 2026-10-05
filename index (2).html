@@ -1,0 +1,658 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Mai Ngọc Anh | Portfolio</title>
+<meta name="description" content="Portfolio of Mai Ngọc Anh, International Economics student at Foreign Trade University, Hanoi.">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700;800&display=swap">
+<style>
+:root{
+  color-scheme:dark;
+  --blue:#4DB4EC; --blue-deep:#8FD0FA; --blue-2:#4DB4EC; --sky:rgba(77,180,236,.16); --mist:rgba(255,255,255,.06);
+  --white:rgba(13,20,48,.72); --ink:#EEF4FF; --gray:#A8B6CE; --sun:#F5C95D; --line:rgba(150,185,255,.24);
+  --on:#06122B; --night:#060A1A;
+  --shadow:0 10px 30px rgba(0,0,0,.38); --shadow-up:0 22px 48px rgba(77,180,236,.24);
+  --r-lg:28px; --r-md:20px; --r-sm:14px;
+  --font:'Manrope','Segoe UI',Arial,sans-serif;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+}
+/* the night-sky look is the design itself, so light and dark mode share the same tokens */
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){ color-scheme:dark } }
+:root[data-theme="dark"]{ color-scheme:dark }
+*,*::before,*::after{box-sizing:inherit}
+html{scroll-behavior:smooth;scroll-padding-top:calc(env(safe-area-inset-top,0px) + 84px)}
+body{margin:0;font-family:var(--font);font-weight:500;font-size:17px;line-height:1.65;color:var(--ink);
+  background:var(--night);overflow-x:hidden}
+img,svg{max-width:100%}
+a{color:var(--blue-deep)}
+:focus-visible{outline:3px solid var(--sun);outline-offset:3px;border-radius:8px}
+#air{position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index:0}
+.wrap{position:relative;z-index:1;max-width:1120px;margin:0 auto;padding:0 24px}
+
+/* navigation */
+.nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:rgba(6,10,26,.62);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+.nav-in{max-width:1120px;margin:0 auto;padding:14px 24px;display:flex;align-items:center;justify-content:space-between;gap:20px}
+.brand{font-weight:800;letter-spacing:.06em;color:var(--ink);text-decoration:none;font-size:16px;white-space:nowrap}
+.links{display:flex;gap:4px;list-style:none;margin:0;padding:0}
+.links a{display:block;padding:8px 12px;border-radius:999px;font-size:13px;font-weight:700;letter-spacing:.08em;color:var(--ink);text-decoration:none;transition:background .25s,color .25s}
+.links a:hover,.links a.active{background:var(--sky);color:var(--blue-deep)}
+.burger{display:none;width:44px;height:44px;border:1px solid var(--line);border-radius:14px;background:var(--white);cursor:pointer;align-items:center;justify-content:center}
+.burger span,.burger span::before,.burger span::after{display:block;width:18px;height:2px;background:var(--ink);border-radius:2px;position:relative;transition:transform .25s}
+.burger span::before,.burger span::after{content:"";position:absolute;left:0}
+.burger span::before{top:-6px}.burger span::after{top:6px}
+@media (max-width:940px){
+  .burger{display:flex}
+  .links{position:absolute;left:12px;right:12px;top:calc(100% + 8px);flex-direction:column;gap:2px;padding:10px;background:#0D1430;border:1px solid var(--line);border-radius:var(--r-md);box-shadow:var(--shadow-up);display:none}
+  .links.open{display:flex}
+  .links a{padding:12px 14px;font-size:14px}
+}
+
+/* shared */
+section{padding:clamp(64px,9vw,112px) 0}
+h1,h2,h3{margin:0;font-weight:800;letter-spacing:-.02em;line-height:1.1;color:var(--ink)}
+h2{font-size:clamp(34px,5vw,56px);margin-bottom:12px}
+.sub{font-size:clamp(18px,2.2vw,22px);font-weight:600;color:var(--blue-deep);margin:0 0 36px;max-width:40ch}
+p{margin:0 0 16px;max-width:66ch}
+.muted{color:var(--gray)}
+.card{background:var(--white);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border:1px solid var(--line);border-radius:var(--r-lg);box-shadow:var(--shadow);transition:transform .35s cubic-bezier(.2,.7,.2,1),box-shadow .35s,border-color .35s,background .35s}
+.lift:hover{transform:translateY(-8px);box-shadow:var(--shadow-up);border-color:var(--blue-2)}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:14px 26px;border-radius:999px;border:1.5px solid var(--blue);background:var(--white);color:var(--blue-deep);font:inherit;font-weight:800;font-size:14px;letter-spacing:.08em;text-decoration:none;cursor:pointer;transition:transform .3s,box-shadow .3s,background .3s,color .3s}
+.btn svg{width:16px;height:16px;transition:transform .3s}
+.btn:hover{background:var(--blue-deep);border-color:var(--blue-deep);color:var(--on);transform:translateY(-3px);box-shadow:0 12px 26px rgba(22,135,201,.28)}
+.btn:hover svg{transform:translateX(4px)}
+.btn.fill{background:var(--blue-deep);border-color:var(--blue-deep);color:var(--on)}
+.btn.fill:hover{background:var(--ink);border-color:var(--ink)}
+.chip{display:inline-block;padding:6px 14px;border-radius:999px;background:var(--sky);color:var(--blue-deep);font-size:13px;font-weight:700;letter-spacing:.04em}
+.chips{display:flex;flex-wrap:wrap;gap:8px;list-style:none;margin:0;padding:0}
+
+/* reveal on scroll */
+.rv{opacity:0;transform:translateY(22px);transition:opacity .7s ease,transform .7s cubic-bezier(.2,.7,.2,1);transition-delay:var(--d,0s)}
+.rv.in{opacity:1;transform:none}
+
+/* 01 home */
+.hero{padding-top:clamp(40px,7vw,84px)}
+.hero-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:clamp(28px,5vw,64px);align-items:center}
+h1{font-size:clamp(44px,7.6vw,88px);margin-bottom:18px}
+.role{font-size:clamp(19px,2.4vw,24px);font-weight:700;color:var(--blue-deep);margin-bottom:14px}
+.intro{font-size:clamp(17px,2vw,19px);max-width:46ch;margin-bottom:28px}
+.cta{display:flex;flex-wrap:wrap;gap:12px}
+.tag{position:absolute;padding:9px 16px;border-radius:999px;background:var(--white);border:1px solid var(--line);box-shadow:var(--shadow);font-size:12px;font-weight:800;letter-spacing:.12em;color:var(--blue-deep);animation:bob 6s ease-in-out infinite}
+.hero-side{position:relative;padding:30px 10px}
+.tag.t1{left:-6px;top:4px}.tag.t2{right:-6px;top:24px;animation-delay:-2s}.tag.t3{left:12%;bottom:4px;animation-delay:-4s}
+.tag::before{content:"";display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--sun);margin-right:8px}
+@keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+.quote{padding:clamp(28px,4vw,44px);display:grid;gap:22px}
+.quote blockquote{margin:0;font-size:clamp(24px,3vw,34px);font-weight:800;line-height:1.25;letter-spacing:-.01em}
+.quote blockquote::before{content:"";display:block;width:56px;height:6px;border-radius:3px;background:var(--sun);margin-bottom:18px}
+.path{display:flex;flex-wrap:wrap;align-items:center;gap:10px;list-style:none;margin:0;padding:0}
+.path li{font-size:13px;font-weight:800;letter-spacing:.12em;color:var(--blue-deep);padding:8px 16px;border-radius:999px;background:var(--sky)}
+.path li:last-child{background:var(--blue-deep);color:var(--on)}
+.path .to{background:none;padding:0;color:var(--blue-2);font-size:18px}
+@media (max-width:860px){
+  .hero-grid{grid-template-columns:1fr}
+}
+
+/* 02 about */
+.about-grid{display:grid;grid-template-columns:1.2fr .8fr;gap:clamp(24px,4vw,56px);align-items:start}
+.traits{display:grid;gap:16px}
+.trait{padding:22px 24px}
+.trait h3{font-size:15px;letter-spacing:.14em;color:var(--blue-deep);margin-bottom:6px}
+.trait p{margin:0;font-size:16px}
+.trait:nth-child(2){margin-left:clamp(0px,3vw,32px)}
+.trait:nth-child(3){margin-left:clamp(0px,6vw,64px)}
+@media (max-width:860px){.about-grid{grid-template-columns:1fr}.trait:nth-child(n){margin-left:0}}
+
+/* 03 education */
+.edu{display:grid;grid-template-columns:1.5fr 1fr;gap:20px}
+.edu-main{padding:clamp(24px,4vw,40px);display:grid;gap:18px;background:linear-gradient(150deg,var(--white) 55%,rgba(77,180,236,.22))}
+.edu-main h3{font-size:clamp(24px,3.4vw,36px);letter-spacing:.01em}
+.edu-meta{display:flex;flex-wrap:wrap;gap:12px 36px}
+.edu-meta div span{display:block;font-size:13px;font-weight:700;letter-spacing:.1em;color:var(--gray)}
+.edu-meta div strong{font-size:20px;font-weight:800}
+.edu-side{padding:clamp(22px,3vw,32px)}
+.edu-side h3{font-size:14px;letter-spacing:.14em;color:var(--gray);margin-bottom:14px}
+@media (max-width:760px){.edu{grid-template-columns:1fr}}
+
+/* 04 skills */
+.skill-groups{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+.group h3{font-size:13px;letter-spacing:.16em;color:var(--gray);margin:0 0 12px 6px}
+.group{display:grid;gap:14px;align-content:start}
+.skill{padding:20px;display:flex;align-items:center;gap:14px;border-radius:var(--r-md);background:var(--white)}
+.skill .ico{flex:none;width:46px;height:46px;border-radius:14px;background:var(--mist);display:grid;place-items:center;transition:background .35s,transform .45s cubic-bezier(.2,.7,.2,1)}
+.skill .ico svg{width:24px;height:24px;fill:none;stroke:var(--blue-deep);stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;transition:stroke .35s}
+.skill strong{font-weight:800;font-size:15px;letter-spacing:.06em;line-height:1.3}
+.skill:hover{transform:translateY(-7px) rotate(-1deg);box-shadow:var(--shadow-up);border-color:var(--blue)}
+.skill:hover .ico{background:var(--blue-deep);transform:rotate(8deg) scale(1.08)}
+.skill:hover .ico svg{stroke:var(--on)}
+@media (max-width:940px){.skill-groups{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:520px){.skill-groups{grid-template-columns:1fr}}
+
+/* 05 languages */
+.langs{display:flex;flex-wrap:wrap;gap:16px}
+.lang{padding:18px 26px;border-radius:999px;display:flex;align-items:baseline;gap:12px}
+.lang strong{font-size:18px;font-weight:800}
+.lang span{font-size:15px;color:var(--gray)}
+.lang:nth-child(even){transform:translateY(10px)}
+.lang.lift:nth-child(even):hover{transform:translateY(2px)}
+
+/* 06 projects */
+.feature{display:grid;grid-template-columns:1fr 1.15fr;overflow:hidden;margin-bottom:22px}
+.thumb{overflow:hidden;position:relative;min-height:240px}
+.thumb>div,.thumb>svg{width:100%;height:100%;transition:transform .6s cubic-bezier(.2,.7,.2,1)}
+.card:hover .thumb>div,.card:hover .thumb>svg{transform:scale(1.06)}
+.roomora{background:linear-gradient(150deg,#FFF7EF,#FADAC7);display:flex;flex-direction:column;align-items:flex-start;justify-content:flex-end;gap:6px;padding:clamp(22px,3vw,36px)}
+.roomora .rings{display:flex;margin-bottom:auto}
+.roomora .rings i{width:74px;height:74px;border-radius:50%;border:6px solid #E8753D;display:block}
+.roomora .rings i+i{margin-left:-26px;border-color:#F28A62}
+.roomora b{font-size:clamp(30px,4vw,44px);font-weight:800;letter-spacing:.04em;color:#402A25;line-height:1}
+.roomora span{font-size:16px;font-weight:700;color:#B84E1B}
+.f-body{padding:clamp(24px,3.4vw,40px);display:grid;gap:16px;align-content:start}
+.kicker{font-size:13px;font-weight:800;letter-spacing:.12em;color:var(--gray);margin:0}
+.f-body h3{font-size:clamp(26px,3.4vw,38px)}
+.case{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:4px 0}
+.case div{padding:14px 16px;border-radius:var(--r-sm);background:var(--mist);border:1px solid var(--line)}
+.case dt{font-size:12px;font-weight:800;letter-spacing:.14em;color:var(--blue-deep);margin-bottom:4px}
+.case dd{margin:0;font-size:15px;line-height:1.5}
+.small{display:grid;grid-template-columns:1.25fr 1fr;gap:22px}
+.proj{overflow:hidden;display:flex;flex-direction:column}
+.proj .thumb{min-height:170px;background:#101B40}
+.proj.compact .thumb{min-height:120px}
+.p-body{padding:24px 26px 26px;display:grid;gap:12px;align-content:start;flex:1}
+.p-body h3{font-size:24px}
+.more{border-top:1px dashed var(--line);padding-top:14px;display:grid;gap:10px}
+.more[hidden]{display:none}
+.papers{list-style:none;margin:0;padding:0;display:grid;gap:10px}
+.papers li{padding:12px 16px;border-radius:var(--r-sm);background:var(--mist);border:1px dashed var(--blue-2);display:grid;gap:2px}
+.papers strong{font-weight:800;font-size:16px;line-height:1.35}
+.papers span{font-size:14px;color:var(--gray)}
+.site-link{font-weight:800;word-break:break-all}
+@media (max-width:860px){.feature,.small{grid-template-columns:1fr}.case{grid-template-columns:1fr}}
+
+/* 07 experience */
+.timeline{position:relative;padding-left:34px}
+.timeline::before{content:"";position:absolute;left:9px;top:8px;bottom:8px;width:2px;background:linear-gradient(var(--blue-2),var(--sky))}
+.job{position:relative;padding:clamp(22px,3vw,34px);display:grid;gap:12px}
+.job::before{content:"";position:absolute;left:-34px;top:34px;width:20px;height:20px;border-radius:50%;background:var(--white);border:5px solid var(--blue)}
+.job h3{font-size:clamp(20px,2.8vw,28px);letter-spacing:.02em}
+.job-meta{display:flex;flex-wrap:wrap;gap:8px 20px;font-weight:700;color:var(--blue-deep)}
+
+.vol{display:grid;grid-template-columns:1.25fr 1fr;gap:22px;align-items:start}
+.vol-card{padding:clamp(22px,3vw,34px);display:grid;gap:12px}
+.vol-card h3{font-size:clamp(20px,2.6vw,26px);line-height:1.2}
+.vol-card ul.pts{margin:0;padding-left:20px;display:grid;gap:8px}
+.vol-card ul.pts li{font-size:16px;line-height:1.5}
+@media (max-width:860px){.vol{grid-template-columns:1fr}}
+
+/* 08 resume */
+.resume{max-width:760px}
+.paper{padding:clamp(24px,4vw,44px);border-radius:10px;display:grid;gap:18px;font-size:15px}
+.paper header{border-bottom:2px solid var(--ink);padding-bottom:12px}
+.paper header strong{display:block;font-size:26px;font-weight:800;letter-spacing:.02em}
+.paper h3{font-size:12px;letter-spacing:.16em;color:var(--blue-deep);margin-bottom:6px}
+.paper p{margin:0;max-width:none;line-height:1.55}
+
+/* 09 philosophy */
+.phil{text-align:center}
+.phil blockquote{margin:0 auto 40px;max-width:18ch;font-size:clamp(32px,6vw,68px);font-weight:800;line-height:1.12;letter-spacing:-.02em}
+.phil blockquote em{font-style:normal;color:var(--blue-deep)}
+.steps{list-style:none;margin:0 auto;padding:0;display:grid;justify-items:center;gap:8px}
+.steps li{padding:12px 34px;border-radius:999px;background:var(--white);border:1px solid var(--line);box-shadow:var(--shadow);font-weight:800;letter-spacing:.18em;font-size:14px;color:var(--ink)}
+.steps .dn{padding:0;border:0;box-shadow:none;background:none;color:var(--blue-2);font-size:20px;letter-spacing:0;line-height:1}
+.steps li:last-child{background:var(--blue-deep);border-color:var(--blue-deep);color:var(--on)}
+
+/* 10 contact */
+.contact{padding:clamp(28px,5vw,56px);display:grid;gap:20px;background:linear-gradient(150deg,var(--white) 50%,rgba(77,180,236,.22))}
+.contact h2{margin:0}
+.who{display:grid;gap:2px;font-weight:700}
+.who strong{font-size:22px;font-weight:800}
+.closing{margin:8px 0 0;font-weight:800;font-size:clamp(18px,2.4vw,22px);color:var(--blue-deep)}
+.contact-grid{display:grid;grid-template-columns:1fr 1.1fr;gap:22px;align-items:start}
+.msg{padding:clamp(24px,4vw,40px);display:grid;gap:16px}
+.msg h3{font-size:clamp(24px,3vw,32px)}
+.msg>p{margin:0}
+.field{display:grid;gap:6px}
+.field label{font-weight:800;font-size:15px}
+.field input,.field textarea{font:inherit;color:var(--ink);padding:14px 16px;border:1.5px solid var(--line);border-radius:var(--r-sm);background:var(--mist);width:100%;transition:border-color .25s,box-shadow .25s,background .25s}
+.field textarea{resize:vertical;min-height:130px}
+.field input::placeholder,.field textarea::placeholder{color:#8493AD}
+.field input:focus,.field textarea:focus{outline:none;border-color:var(--blue);background:var(--white);box-shadow:0 0 0 4px rgba(22,135,201,.16)}
+.field.bad input,.field.bad textarea{border-color:#FFB86B}
+.err{font-size:14px;font-weight:700;color:#FFB86B}
+.form-note{font-size:15px;color:var(--gray)}
+@media (max-width:860px){.contact-grid{grid-template-columns:1fr}}
+footer{position:relative;z-index:1;text-align:center;padding:28px 24px 40px;font-size:14px;color:var(--gray)}
+
+@media (prefers-reduced-motion: reduce){
+  html{scroll-behavior:auto}
+  .rv{opacity:1;transform:none;transition:none}
+  .tag{animation:none}
+  .card,.btn,.skill .ico,.thumb>div,.thumb>svg{transition:none}
+}
+</style>
+</head>
+<body>
+<canvas id="air" aria-hidden="true"></canvas>
+
+<div class="nav">
+  <div class="nav-in">
+    <a class="brand" href="#home">MAI NGỌC ANH</a>
+    <button class="burger" id="burger" aria-label="Open menu" aria-expanded="false" aria-controls="menu"><span></span></button>
+    <ul class="links" id="menu">
+      <li><a href="#home">HOME</a></li>
+      <li><a href="#about">ABOUT</a></li>
+      <li><a href="#skills">SKILLS</a></li>
+      <li><a href="#projects">PROJECTS</a></li>
+      <li><a href="#experience">EXPERIENCE</a></li>
+      <li><a href="#resume">RESUME</a></li>
+      <li><a href="#contact">CONTACT</a></li>
+    </ul>
+  </div>
+</div>
+
+<main class="wrap">
+
+  <!-- 01 HOME -->
+  <section class="hero" id="home">
+    <div class="hero-grid">
+      <div>
+        <h1 class="rv">Hi, I'm Mai Ngọc Anh.</h1>
+        <p class="role rv" style="--d:.1s">International Economics student at Foreign Trade University.</p>
+        <p class="intro rv" style="--d:.2s">I enjoy exploring different fields, learning from new environments, and turning ideas into things that actually work.</p>
+        <div class="cta rv" style="--d:.3s">
+          <a class="btn fill" href="#projects">VIEW MY WORK
+            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
+          <a class="btn" href="#resume">VIEW RESUME</a>
+        </div>
+      </div>
+      <div class="hero-side rv" style="--d:.25s">
+        <div class="quote card lift">
+          <blockquote>“An idea is only an idea until it becomes a finished product.”</blockquote>
+          <ol class="path" aria-label="How I work">
+            <li>IDEA</li><li class="to" aria-hidden="true">→</li>
+            <li>EXPLORATION</li><li class="to" aria-hidden="true">→</li>
+            <li>EXECUTION</li><li class="to" aria-hidden="true">→</li>
+            <li>RESULT</li>
+          </ol>
+        </div>
+        <span class="tag t1">FLEXIBLE</span>
+        <span class="tag t2">CURIOUS</span>
+        <span class="tag t3">ADAPTABLE</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- 02 ABOUT -->
+  <section id="about">
+    <h2 class="rv">About Me</h2>
+    <p class="sub rv" style="--d:.08s">Curious enough to explore. Adaptable enough to keep going.</p>
+    <div class="about-grid">
+      <div class="rv" style="--d:.12s">
+        <p>I’m Mai Ngọc Anh, an International Economics student at Foreign Trade University. I enjoy exploring different areas, from market research and business to product ideas and academic research.</p>
+        <p>I’m naturally curious and comfortable adapting to new environments. Rather than limiting myself to one field, I enjoy connecting different perspectives and turning what I learn into something practical.</p>
+        <p><strong>I believe that ideas become meaningful when they are executed.</strong></p>
+      </div>
+      <div class="traits">
+        <div class="trait card lift rv" style="--d:.1s"><h3>FLEXIBLE</h3><p>Comfortable moving between different fields and kinds of work.</p></div>
+        <div class="trait card lift rv" style="--d:.2s"><h3>ADAPTABLE</h3><p>At ease in new environments, and quick to find my footing.</p></div>
+        <div class="trait card lift rv" style="--d:.3s"><h3>CURIOUS</h3><p>Always asking how things work, and open to learning.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 03 EDUCATION -->
+  <section id="education">
+    <h2 class="rv">Education</h2>
+    <p class="sub rv" style="--d:.08s">Where I’m building my foundation.</p>
+    <div class="edu">
+      <div class="edu-main card lift rv" style="--d:.1s">
+        <span class="chip" style="justify-self:start">2024 — 2028</span>
+        <h3>FOREIGN TRADE UNIVERSITY</h3>
+        <div class="edu-meta">
+          <div><span>MAJOR</span><strong>International Economics</strong></div>
+          <div><span>GPA</span><strong>3.52 / 4.00</strong></div>
+          <div><span>EXPECTED GRADUATION</span><strong>April 2028</strong></div>
+          <div><span>LOCATION</span><strong>Hanoi, Vietnam</strong></div>
+        </div>
+      </div>
+      <div class="edu-side card lift rv" style="--d:.2s">
+        <h3>RELEVANT COURSEWORK</h3>
+        <ul class="chips"><li class="chip">Business Analytics</li></ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- 04 SKILLS -->
+  <section id="skills">
+    <h2 class="rv">What I Can Do</h2>
+    <p class="sub rv" style="--d:.08s">Tools and habits I bring to a project.</p>
+    <div class="skill-groups">
+      <div class="group rv" style="--d:.05s">
+        <h3>TOOLS</h3>
+        <div class="skill card"><span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="4" width="16" height="16" rx="3"/><path d="M4 10h16M10 4v16"/></svg></span><strong>MOS</strong></div>
+        <div class="skill card"><span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20l4-1 11-11-3-3L5 16z"/><path d="M14 7l3 3"/></svg></span><strong>EDITING</strong></div>
+      </div>
+      <div class="group rv" style="--d:.15s">
+        <h3>BUSINESS</h3>
+        <div class="skill card"><span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="6"/><path d="M20 20l-4.5-4.5"/></svg></span><strong>MARKET RESEARCH</strong></div>
+        <div class="skill card"><span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 20V11M12 20V5M19 20v-6M3 20h18"/></svg></span><strong>BUSINESS ANALYTICS</strong></div>
+      </div>
+      <div class="group rv" style="--d:.25s">
+        <h3>RESEARCH</h3>
+        <div class="skill card"><span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5a2 2 0 0 1 2-2h13v16H6a2 2 0 0 0-2 2z"/><path d="M8 8h7M8 12h5"/></svg></span><strong>RESEARCH</strong></div>
+      </div>
+      <div class="group rv" style="--d:.35s">
+        <h3>COMMUNICATION</h3>
+        <div class="skill card"><span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M12 16v4M8 20h8M8 12l3-3 2 2 3-3"/></svg></span><strong>PRESENTATION</strong></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 05 LANGUAGES -->
+  <section id="languages">
+    <h2 class="rv">Languages</h2>
+    <p class="sub rv" style="--d:.08s">Languages I use and study.</p>
+    <div class="langs">
+      <div class="lang card lift rv" style="--d:.05s"><strong>Vietnamese</strong><span lang="vi">Tiếng Việt</span></div>
+      <div class="lang card lift rv" style="--d:.12s"><strong>English</strong><span>English</span></div>
+      <div class="lang card lift rv" style="--d:.19s"><strong>Chinese</strong><span lang="zh">中文</span></div>
+      <div class="lang card lift rv" style="--d:.26s"><strong>Korean</strong><span lang="ko">한국어</span></div>
+    </div>
+  </section>
+
+  <!-- 06 PROJECTS -->
+  <section id="projects">
+    <h2 class="rv">Things I've Built &amp; Explored</h2>
+    <p class="sub rv" style="--d:.08s">From a startup idea to research questions.</p>
+
+    <article class="feature card lift rv">
+      <div class="thumb"><div class="roomora" role="img" aria-label="ROOMORA, More Than a Room">
+        <span class="rings" aria-hidden="true"><i></i><i></i></span>
+        <b>ROOMORA</b><span>More Than a Room.</span>
+      </div></div>
+      <div class="f-body">
+        <p class="kicker">FEATURED · STARTUP / PRODUCT / WEB PLATFORM</p>
+        <h3>More Than a Room — ROOMORA</h3>
+        <ul class="chips"><li class="chip">Role: Co-Founder</li></ul>
+        <p>A lifestyle-based roommate matching platform designed to help people find not only a suitable room, but also a compatible person to live with.</p>
+        <dl class="case">
+          <div><dt>PROBLEM</dt><dd>Listings describe the room, not the person you will share it with.</dd></div>
+          <div><dt>IDEA</dt><dd>Match people on lifestyle: sleep, cleanliness, cooking, privacy, noise, visitors.</dd></div>
+          <div><dt>PRODUCT</dt><dd>Create a profile, answer lifestyle questions, get matched, connect when both agree.</dd></div>
+          <div><dt>BUSINESS MODEL</dt><dd>Free discovery, with premium features, verification and partnerships still to be validated.</dd></div>
+        </dl>
+        <p style="margin:0">Live site: <a class="site-link" href="https://roomora-vkga.onrender.com/" target="_blank" rel="noopener">roomora-vkga.onrender.com</a></p>
+        <div><a class="btn fill" href="https://roomora-vkga.onrender.com/" target="_blank" rel="noopener">VIEW PROJECT
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a></div>
+      </div>
+    </article>
+
+    <div class="small">
+      <article class="proj card lift rv" style="--d:.08s">
+        <div class="thumb"><svg viewBox="0 0 400 170" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Abstract line chart">
+          <rect width="400" height="170" fill="#101B40"/>
+          <path d="M0 130h400M0 90h400M0 50h400" stroke="#2A3A70" stroke-width="2"/>
+          <path d="M20 132l70-34 60 18 70-52 60 22 100-58" fill="none" stroke="#4DB4EC" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+          <circle cx="220" cy="64" r="9" fill="#101B40" stroke="#4DB4EC" stroke-width="5"/>
+          <circle cx="380" cy="28" r="9" fill="#F5C95D" stroke="#101B40" stroke-width="4"/>
+        </svg></div>
+        <div class="p-body">
+          <p class="kicker">ACADEMIC RESEARCH</p>
+          <h3>International Economics Research</h3>
+          <p>Small research projects exploring topics related to international economics, business and economic development.</p>
+          <div><button class="btn" type="button" aria-expanded="false" aria-controls="more-2" data-more>VIEW PROJECT
+            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg></button></div>
+          <div class="more" id="more-2" hidden>
+            <p class="kicker">PAPERS</p>
+            <ul class="papers">
+              <li><strong>[Title of paper 1]</strong><span>Course paper · [Course name] · [Year] · [Link]</span></li>
+              <li><strong>[Title of paper 2]</strong><span>Course paper · [Course name] · [Year] · [Link]</span></li>
+              <li><strong>[Title of paper 3]</strong><span>Course paper · [Course name] · [Year] · [Link]</span></li>
+            </ul>
+            <ul class="chips"><li class="chip">Research</li><li class="chip">Data</li><li class="chip">Analysis</li><li class="chip">Economic thinking</li></ul>
+          </div>
+        </div>
+      </article>
+
+      <article class="proj compact card lift rv" style="--d:.16s">
+        <div class="thumb"><svg viewBox="0 0 400 120" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Abstract bar chart">
+          <rect width="400" height="120" fill="#0E1736"/>
+          <g fill="#3FA9E0"><rect x="60" y="62" width="34" height="58" rx="8"/><rect x="118" y="40" width="34" height="80" rx="8"/><rect x="176" y="74" width="34" height="46" rx="8"/><rect x="234" y="28" width="34" height="92" rx="8"/></g>
+          <rect x="292" y="50" width="34" height="70" rx="8" fill="#8FD0FA"/>
+        </svg></div>
+        <div class="p-body">
+          <p class="kicker">RESEARCH / BUSINESS</p>
+          <h3>Research &amp; Business Projects</h3>
+          <p>A collection of smaller academic and business research projects exploring markets, firms, financial performance and economic relationships.</p>
+          <div><button class="btn" type="button" aria-expanded="false" aria-controls="more-3" data-more>VIEW PROJECT
+            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg></button></div>
+          <div class="more" id="more-3" hidden>
+            <p class="kicker">PAPERS</p>
+            <ul class="papers">
+              <li><strong>[Title of paper 1]</strong><span>Course paper · [Course name] · [Year] · [Link]</span></li>
+              <li><strong>[Title of paper 2]</strong><span>Course paper · [Course name] · [Year] · [Link]</span></li>
+            </ul>
+            <ul class="chips"><li class="chip">Markets</li><li class="chip">Firms</li><li class="chip">Financial performance</li><li class="chip">Economic relationships</li></ul>
+          </div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- 07 EXPERIENCE -->
+  <section id="experience">
+    <h2 class="rv">Experience</h2>
+    <p class="sub rv" style="--d:.08s">Learning how a real business works.</p>
+    <div class="timeline">
+      <article class="job card lift rv" style="--d:.12s">
+        <h3>SKINCARE PRODUCT COMPANY</h3>
+        <div class="job-meta"><span>Intern</span><span>4 months</span></div>
+        <p>Gained practical exposure to a skincare product business and learned how products, markets and customer needs connect in a real business environment.</p>
+        <ul class="chips"><li class="chip">Market understanding</li><li class="chip">Product environment</li><li class="chip">Business exposure</li><li class="chip">Adaptability</li></ul>
+      </article>
+    </div>
+  </section>
+
+  <!-- VOLUNTEER -->
+  <section id="volunteer">
+    <h2 class="rv">Volunteer Projects</h2>
+    <p class="sub rv" style="--d:.08s">Community work I have taken part in.</p>
+    <div class="vol">
+      <article class="vol-card card lift rv" style="--d:.1s">
+        <ul class="chips"><li class="chip">2023</li><li class="chip">School Project Coordinator</li></ul>
+        <h3>Tran Phu – Connecting Hearts Charity Campaign</h3>
+        <ul class="pts">
+          <li>Coordinated the weekly collection of recyclable paper from classrooms across the school.</li>
+          <li>Managed the collection process and worked with the organizing committee to convert recyclable materials into funds for the campaign.</li>
+          <li>Assisted in preparing and distributing gifts to underprivileged primary school students.</li>
+        </ul>
+      </article>
+      <article class="vol-card card lift rv" style="--d:.2s">
+        <ul class="chips"><li class="chip">Aug – Sep 2025</li><li class="chip">Volunteer</li></ul>
+        <h3>80th Anniversary of the August Revolution &amp; National Day Commemoration Campaign (A80)</h3>
+      </article>
+    </div>
+  </section>
+
+  <!-- 08 RESUME -->
+  <section id="resume">
+    <h2 class="rv">Resume</h2>
+    <p class="sub rv" style="--d:.08s">Everything above, on one page.</p>
+    <div class="resume">
+      <div class="paper card rv" id="cv" style="--d:.1s">
+        <header><strong>Mai Ngọc Anh</strong>Hanoi, Vietnam · navana@gmail.com</header>
+        <div><h3>EDUCATION</h3><p><strong>Foreign Trade University</strong>, International Economics, 2024 — 2028<br>GPA 3.52 / 4.00 · Expected graduation April 2028 · Relevant coursework: Business Analytics</p></div>
+        <div><h3>EXPERIENCE</h3><p><strong>Intern, skincare product company</strong>, 4 months<br>Practical exposure to how products, markets and customer needs connect.</p></div>
+        <div><h3>PROJECTS</h3><p><strong>ROOMORA</strong>, Co-Founder: lifestyle-based roommate matching platform (<a href="https://roomora-vkga.onrender.com/" target="_blank" rel="noopener">roomora-vkga.onrender.com</a>)<br>International Economics Research · Research &amp; Business Projects</p></div>
+        <div><h3>VOLUNTEER</h3><p><strong>Tran Phu – Connecting Hearts Charity Campaign</strong>, School Project Coordinator, 2023<br><strong>A80 Commemoration Campaign</strong>, Volunteer, Aug – Sep 2025</p></div>
+        <div><h3>SKILLS</h3><p>MOS · Editing · Market Research · Business Analytics · Research · Presentation</p></div>
+        <div><h3>LANGUAGES</h3><p>Vietnamese · English · Chinese · Korean</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 09 PHILOSOPHY -->
+  <section class="phil" id="philosophy">
+    <blockquote class="rv">“An idea is only an idea <em>until it becomes a finished product.</em>”</blockquote>
+    <ol class="steps" aria-label="From idea to improvement">
+      <li class="rv" style="--d:.05s">IDEA</li><li class="dn rv" style="--d:.1s" aria-hidden="true">↓</li>
+      <li class="rv" style="--d:.15s">EXPLORE</li><li class="dn rv" style="--d:.2s" aria-hidden="true">↓</li>
+      <li class="rv" style="--d:.25s">BUILD</li><li class="dn rv" style="--d:.3s" aria-hidden="true">↓</li>
+      <li class="rv" style="--d:.35s">LEARN</li><li class="dn rv" style="--d:.4s" aria-hidden="true">↓</li>
+      <li class="rv" style="--d:.45s">IMPROVE</li>
+    </ol>
+  </section>
+
+  <!-- 10 CONTACT -->
+  <section id="contact">
+    <div class="contact-grid">
+      <div class="contact card rv">
+        <h2>Let's Connect.</h2>
+        <p style="margin:0">I'm always open to new ideas, opportunities and interesting projects.</p>
+        <div class="who">
+          <strong>Mai Ngọc Anh</strong>
+          <span>Hanoi, Vietnam</span>
+          <a href="mailto:navana@gmail.com">navana@gmail.com</a>
+        </div>
+        <div class="cta">
+          <a class="btn fill" href="mailto:navana@gmail.com">EMAIL ME</a>
+          <!-- Replace the href below with the real LinkedIn profile address -->
+          <a class="btn" href="https://www.linkedin.com/" target="_blank" rel="noopener">LINKEDIN</a>
+        </div>
+        <p class="closing">Always curious. Always adapting. Always building.</p>
+      </div>
+      <form class="msg card rv" id="msg" novalidate style="--d:.12s">
+        <h3>Send a Direct Message</h3>
+        <p>I'll reply by email within 24 working hours.</p>
+        <div class="field"><label for="f-name">Your full name</label>
+          <input id="f-name" name="name" type="text" autocomplete="name" placeholder="e.g. Nguyễn Văn An">
+          <span class="err" id="e-name" hidden>Enter your name.</span></div>
+        <div class="field"><label for="f-email">Email address</label>
+          <input id="f-email" name="email" type="email" autocomplete="email" placeholder="name@example.com">
+          <span class="err" id="e-email" hidden>Enter a valid email address.</span></div>
+        <div class="field"><label for="f-topic">Position / project to discuss</label>
+          <input id="f-topic" name="topic" type="text" placeholder="e.g. An internship opportunity or a project idea">
+          <span class="err" id="e-topic" hidden>Tell me what this is about.</span></div>
+        <div class="field"><label for="f-body">Details</label>
+          <textarea id="f-body" name="body" rows="5" placeholder="Share the role or project details..."></textarea>
+          <span class="err" id="e-body" hidden>Add a short message.</span></div>
+        <div><button class="btn fill" type="submit">SEND MESSAGE</button></div>
+        <p class="form-note" id="msg-note" aria-live="polite">Sending opens your email app with this message filled in.</p>
+      </form>
+    </div>
+  </section>
+</main>
+
+<footer>© 2026 Mai Ngọc Anh</footer>
+
+<script>
+(function(){
+  /* mobile menu */
+  var burger=document.getElementById('burger'),menu=document.getElementById('menu');
+  burger.addEventListener('click',function(){
+    var open=menu.classList.toggle('open');
+    burger.setAttribute('aria-expanded',open);
+    burger.setAttribute('aria-label',open?'Close menu':'Open menu');
+  });
+  menu.addEventListener('click',function(e){
+    if(e.target.tagName==='A'){menu.classList.remove('open');burger.setAttribute('aria-expanded','false');burger.setAttribute('aria-label','Open menu');}
+  });
+
+  /* project detail panels */
+  document.querySelectorAll('[data-more]').forEach(function(b){
+    b.addEventListener('click',function(){
+      var p=document.getElementById(b.getAttribute('aria-controls'));
+      var show=p.hasAttribute('hidden');
+      if(show){p.removeAttribute('hidden');}else{p.setAttribute('hidden','');}
+      b.setAttribute('aria-expanded',show);
+      b.firstChild.textContent=show?'HIDE DETAILS ':'VIEW PROJECT ';
+    });
+  });
+
+  /* direct message form: checks the fields, then opens the visitor's email app */
+  var form=document.getElementById('msg');
+  if(form){
+    var F={name:document.getElementById('f-name'),email:document.getElementById('f-email'),topic:document.getElementById('f-topic'),body:document.getElementById('f-body')};
+    var ok={name:function(v){return v.length>0;},email:function(v){return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v);},topic:function(v){return v.length>0;},body:function(v){return v.length>0;}};
+    function mark(k,good){var e=document.getElementById('e-'+k);F[k].parentNode.classList.toggle('bad',!good);if(good){e.setAttribute('hidden','');}else{e.removeAttribute('hidden');}}
+    Object.keys(F).forEach(function(k){F[k].addEventListener('input',function(){mark(k,true);});});
+    form.addEventListener('submit',function(ev){
+      ev.preventDefault();
+      var first=null,v={};
+      Object.keys(F).forEach(function(k){v[k]=F[k].value.trim();var good=ok[k](v[k]);mark(k,good);if(!good&&!first){first=F[k];}});
+      if(first){first.focus();return;}
+      var body='Name: '+v.name+'\nEmail: '+v.email+'\n\n'+v.body;
+      window.location.href='mailto:navana@gmail.com?subject='+encodeURIComponent(v.topic)+'&body='+encodeURIComponent(body);
+      document.getElementById('msg-note').textContent='Your email app should now be open with the message ready to send. If nothing opened, write to navana@gmail.com.';
+    });
+  }
+
+  /* reveal on scroll + active nav link */
+  var rv=document.querySelectorAll('.rv');
+  if('IntersectionObserver' in window){
+    var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},{threshold:.12,rootMargin:'0px 0px -6% 0px'});
+    rv.forEach(function(el){io.observe(el);});
+    var navLinks={};document.querySelectorAll('.links a').forEach(function(a){navLinks[a.getAttribute('href').slice(1)]=a;});
+    var so=new IntersectionObserver(function(es){es.forEach(function(e){
+      if(e.isIntersecting&&navLinks[e.target.id]){Object.keys(navLinks).forEach(function(k){navLinks[k].classList.remove('active');});navLinks[e.target.id].classList.add('active');}
+    });},{rootMargin:'-45% 0px -50% 0px'});
+    document.querySelectorAll('section[id]').forEach(function(s){so.observe(s);});
+  }else{rv.forEach(function(el){el.classList.add('in');});}
+
+  /* animated night sky: nebula and Milky Way are painted once; stars twinkle and drift; a shooting star passes now and then */
+  var c=document.getElementById('air'),x=c.getContext('2d'),W=0,H=0,dpr,sky=document.createElement('canvas'),stars=[],shoot=null,nextShoot=2500,raf,last=0;
+  var still=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function rnd(a,b){return a+Math.random()*(b-a);}
+  function gauss(){return (Math.random()+Math.random()+Math.random()+Math.random()-2)/2;}
+  function paintSky(){
+    sky.width=W*dpr;sky.height=H*dpr;var g=sky.getContext('2d');g.setTransform(dpr,0,0,dpr,0,0);
+    var bg=g.createLinearGradient(0,0,0,H);bg.addColorStop(0,'#040714');bg.addColorStop(.55,'#0A1030');bg.addColorStop(1,'#0B0A24');
+    g.fillStyle=bg;g.fillRect(0,0,W,H);
+    g.globalCompositeOperation='lighter';
+    var D=Math.sqrt(W*W+H*H);
+    [[.18,.22,.42,'70,110,255',.20],[.52,.48,.50,'150,90,230',.16],[.82,.74,.44,'60,190,230',.13],[.66,.26,.30,'255,130,190',.08],[.30,.78,.34,'90,80,220',.12]].forEach(function(k){
+      var cx=k[0]*W,cy=k[1]*H,r=k[2]*D*.6,rg=g.createRadialGradient(cx,cy,0,cx,cy,r);
+      rg.addColorStop(0,'rgba('+k[3]+','+k[4]+')');rg.addColorStop(1,'rgba('+k[3]+',0)');g.fillStyle=rg;g.fillRect(0,0,W,H);});
+    g.save();g.translate(W/2,H/2);g.rotate(-0.5);
+    var band=g.createLinearGradient(0,-H*.22,0,H*.22);band.addColorStop(0,'rgba(200,215,255,0)');band.addColorStop(.5,'rgba(200,215,255,.10)');band.addColorStop(1,'rgba(200,215,255,0)');
+    g.fillStyle=band;g.fillRect(-D,-H*.22,2*D,H*.44);
+    var n=Math.min(2600,Math.round(W*H/520));
+    for(var i=0;i<n;i++){var px=rnd(-D*.6,D*.6),py=gauss()*H*.16,a=rnd(.05,.4)*(1-Math.min(1,Math.abs(py)/(H*.3)));
+      g.fillStyle='rgba(225,232,255,'+a.toFixed(3)+')';g.fillRect(px,py,rnd(.5,1.4),rnd(.5,1.4));}
+    g.restore();g.globalCompositeOperation='source-over';
+  }
+  function makeStars(){
+    var n=Math.max(90,Math.min(380,Math.round(W*H/3600))),tint=['255,255,255','200,220,255','255,236,200'];stars=[];
+    for(var i=0;i<n;i++){stars.push({x:Math.random()*W,y:Math.random()*H,r:rnd(.5,1.7),a:rnd(.45,1),s:rnd(.6,2.2),p:rnd(0,6.28),v:rnd(.01,.06),c:tint[i%3]});}
+  }
+  function size(force){
+    var w=window.innerWidth,h=window.innerHeight;
+    if(!force&&w===W&&Math.abs(h-H)<140){return false;}
+    dpr=Math.min(window.devicePixelRatio||1,2);W=w;H=h;c.width=W*dpr;c.height=H*dpr;x.setTransform(dpr,0,0,dpr,0,0);paintSky();makeStars();return true;
+  }
+  function draw(t){
+    if(!still){raf=requestAnimationFrame(draw);if(t-last<30){return;}last=t;}
+    x.drawImage(sky,0,0,W,H);
+    for(var i=0;i<stars.length;i++){var s=stars[i];
+      if(!still){s.x-=s.v;if(s.x<-4){s.x=W+4;s.y=Math.random()*H;}}
+      var tw=still?1:(.62+.38*Math.sin(t/1000*s.s+s.p));
+      x.beginPath();x.arc(s.x,s.y,s.r,0,6.2832);x.fillStyle='rgba('+s.c+','+(s.a*tw).toFixed(3)+')';x.fill();
+      if(s.r>1.4){x.beginPath();x.arc(s.x,s.y,s.r*3,0,6.2832);x.fillStyle='rgba('+s.c+','+(s.a*tw*.12).toFixed(3)+')';x.fill();}
+    }
+    if(still){return;}
+    if(!shoot&&t>nextShoot){shoot={x:rnd(W*.25,W),y:rnd(0,H*.4),l:rnd(120,220),life:0};nextShoot=t+rnd(4500,9500);}
+    if(shoot){shoot.life+=1;var k=shoot.life/40,hx=shoot.x-k*420,hy=shoot.y+k*190,al=Math.sin(Math.min(1,k)*3.1416);
+      var gr=x.createLinearGradient(hx,hy,hx+shoot.l,hy-shoot.l*.45);
+      gr.addColorStop(0,'rgba(255,255,255,'+al.toFixed(3)+')');gr.addColorStop(1,'rgba(160,200,255,0)');
+      x.strokeStyle=gr;x.lineWidth=2;x.lineCap='round';x.beginPath();x.moveTo(hx,hy);x.lineTo(hx+shoot.l,hy-shoot.l*.45);x.stroke();
+      if(k>=1){shoot=null;}}
+  }
+  size(true);draw(0);
+  window.addEventListener('resize',function(){if(size(false)&&still){draw(0);}});
+  document.addEventListener('visibilitychange',function(){if(still){return;}if(document.hidden){cancelAnimationFrame(raf);}else{raf=requestAnimationFrame(draw);}});
+})();
+</script>
+</body>
+</html>
